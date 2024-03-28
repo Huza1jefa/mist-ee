@@ -25,7 +25,7 @@ elif [ $# -eq 1 ] && [ "$@" = "api" ]; then
 elif [ $# -eq 1 ] && [ "$@" = "dramatiq" ]; then
     echo "Sending HUP signal to dramatiq"
     echo "---------------------------------------------------"
-    docker compose exec dramatiq bash -c 'kill -HUP $(ps aux | grep -e python | awk "{ print \$2 }")'
+    docker compose exec dramatiq bash -c 'kill -HUP $(ps aux | ep -e python | awk "{ print \$2 }")'
     echo "Done"
 else
     echo "Restarting $@"
